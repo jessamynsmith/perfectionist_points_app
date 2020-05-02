@@ -1,0 +1,68 @@
+body {
+    padding-top: 50px;
+    margin: 10px;
+}
+
+.header {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.small {
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.center {
+    width: 100%;
+    text-align: center;
+}
+
+label:after {
+  color: transparent;
+  content: " *";
+}
+
+label.required:after {
+  color: #d9534f;
+}
+
+p.error_message {
+    color: red;
+}
+
+.content {
+    margin-top: 10px;
+}
+
+.glyphicon-lg {
+    font-size: 18px;
+    line-height: 1.33;
+}
+
+.navbar-brand img {
+    float: left;
+    margin-top: 2px;
+    margin-right: 4px;
+    max-height: 40px;
+    max-width: 40px;
+}
+
+.footer {
+    padding-top: 30px;
+}
+
+.vertical-space {
+  display: block;
+  height: 12px;
+}
+
+.grey {
+    color: grey;
+}
+
+@media (max-width: 639px) {
+    .mobile_hidden {
+        display: none;
+    }
+}

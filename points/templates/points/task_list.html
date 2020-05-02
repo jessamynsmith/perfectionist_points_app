@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Points" %}{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+
+    <h2>{% trans "Points" %}</h2>
+
+    <div class="row header">
+        <div class="col-sm">
+          Task
+        </div>
+        <div class="col-sm">
+          Description
+        </div>
+        <div class="col-sm">
+          Status
+        </div>
+        <div class="col-sm">
+          Points
+        </div>
+        <div class="col-sm">
+          Date
+        </div>
+      </div>
+
+    {% for task in task_list %}
+      <div class="row">
+        <div class="col-sm">
+          {{ task.name }}
+        </div>
+        <div class="col-sm">
+          {{ task.description|truncatechars_html:60 }}
+        </div>
+        <div class="col-sm">
+          {{ task.status }}
+        </div>
+        <div class="col-sm">
+          {{ task.task_type.points_available }}
+        </div>
+        <div class="col-sm">
+            {% if task.is_complete %}
+                {{ task.completed_date }}
+            {% else %}
+                {{ task.due_date }}
+            {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

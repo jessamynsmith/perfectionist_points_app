@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{% static 'img/favicon.ico' %}">
+
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="screen">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div>
+  <a class="navbar-brand" href="#">
+    <img src="{% static 'img/logo.jpg' %}" alt="Perfectionist Points App logo">
+      <div>
+          <span>PPA</span><br>
+          <span class="small">Perfectionist Points App</span>
+      </div>
+  </a>
+</div>
+
+    <ul class="navbar-nav">
+      {% if user.is_anonymous %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_login' %}">
+          <span class="glyphicon-lg glyphicon glyphicon-log-in">Log In</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'task_list' %}">
+          <span class="glyphicon-lg glyphicon glyphicon-star">Points</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'account_logout' %}">
+          <span class="glyphicon-lg glyphicon glyphicon-log-out">Log Out</span>
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+
+</nav>
+
+<div class="content">
+  {% block content %}{% endblock %}
+
+</div>
+
+{% block footer %}
+  <div class="footer">
+    <div class="center">
+      <div>Bugs? Feature requests? Please
+        <a target="_blank" href="https://github.com/jessamynsmith/perfectionist-points-app/issues">contact us</a>!
+        <span class="mobile_hidden">
+          <a target="_blank" href="https://github.com/jessamynsmith/perfectionist-points-app">Source code</a> here.
+        </span>
+      </div>
+
+      <div class="grey">Version {{ VERSION }}, Deployed
+        {{ DEPLOY_DATE|date:"M d, Y, H:i:s e" }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"
+          integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+          crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>
